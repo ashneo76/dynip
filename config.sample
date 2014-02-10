@@ -1,0 +1,8 @@
+#!/bin/sh
+export DYN_LINODE_KEY=
+export DYN_DOMAIN=sample.net
+export DYN_RES=subdomain  # subdomain.sample.net
+export DYN_TYPE=A  # record type
+export DYN_SRV_TYPE=cf # cf/linode/gandi
+export DYN_CF_EMAIL=
+export DYN_CF_KEY=
