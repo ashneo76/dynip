@@ -6,7 +6,7 @@ import os
 
 
 app = Flask(__name__)
-app.debug = False
+app.debug = True
 app.config['SECRET_KEY'] = 'sicritkiy'
 toolbar = DebugToolbarExtension(app)
 
@@ -78,7 +78,7 @@ def cf_update_ip(ip, root, name, type='cname'):
     create_new = True
     for d in domain_list:
         if d['name'] == target_name:
-            cf.rec_edit(z=root, _id=d['rec_id'], content=ip)
+            cf.rec_edit(z=root, _type=type, _id=d['rec_id'], name=name, content=ip)
             create_new = False
             status = 0
             break
