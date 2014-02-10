@@ -1,3 +1,8 @@
+dynip
+=====
+
+dyn dns updater
+
 0. Dependencies
    a. python2.7
    b. pycurl
@@ -7,3 +12,4 @@
 2. Update config with your parameters
 3. Execute start.sh
 4. Point http://server:5000/update
+
