@@ -6,9 +6,10 @@ import os
 
 
 app = Flask(__name__)
-app.debug = False
-app.config['SECRET_KEY'] = 'sicritkiy'
-toolbar = DebugToolbarExtension(app)
+app.debug = os.environ['DYN_DEBUG'] == '1'
+if app.debug:
+	app.config['SECRET_KEY'] = os.environ['DYN_DBG_SECRET']
+	toolbar = DebugToolbarExtension(app)
 
 
 @app.route('/update')

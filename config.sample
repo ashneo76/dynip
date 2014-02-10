@@ -6,3 +6,5 @@ export DYN_TYPE=A  # record type
 export DYN_SRV_TYPE=cf # cf/linode/gandi
 export DYN_CF_EMAIL=
 export DYN_CF_KEY=
+export DYN_DEBUG=0
+export DYN_DBG_SECRET=sicritkiy
