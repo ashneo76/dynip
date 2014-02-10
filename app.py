@@ -1,11 +1,12 @@
 from flask import Flask, request
 from flask_debugtoolbar import DebugToolbarExtension
 from linode import api as l
+from cloudflare import CloudFlare as CF
 import os
 
 
 app = Flask(__name__)
-app.debug = True
+app.debug = False
 app.config['SECRET_KEY'] = 'sicritkiy'
 toolbar = DebugToolbarExtension(app)
 
@@ -14,16 +15,28 @@ toolbar = DebugToolbarExtension(app)
 def update():
     ip = request.remote_addr
     print('Received new ip: ' + ip)
-    status = update_ip(ip, root=os.environ['DYN_DOMAIN'], name=os.environ['DYN_RES'],
+    status = update_ip(service=os.environ['DYN_SRV_TYPE'],
+                       ip=ip,
+                       root=os.environ['DYN_DOMAIN'],
+                       name=os.environ['DYN_RES'],
                        type=os.environ['DYN_TYPE'])
     if status == -1:
         pass
     return ip
 
 
-def update_ip(ip, root, name, type='cname'):
-    api_key = os.environ['LINODE_API_KEY']
-    linode = l.Api(key=api_key)
+def update_ip(service, ip, root, name, type):
+    status = -1
+    if service == 'linode':
+        status = linode_update_ip(ip, root, name, type)
+    elif service == 'cf':
+        status = cf_update_ip(ip, root, name, type)
+
+    return status
+
+
+def linode_update_ip(ip, root, name, type='cname'):
+    linode = l.Api(key=os.environ['DYN_LINODE_KEY'])
     domain_id = -1
     domain_list = linode.domain_list()
     for d in domain_list:
@@ -53,6 +66,26 @@ def update_ip(ip, root, name, type='cname'):
                                           type=type,
                                           target=ip)
             status = 0
+
+    return status
+
+
+def cf_update_ip(ip, root, name, type='cname'):
+    status = -1
+    target_name = name + '.' + root
+    cf = CF(os.environ['DYN_CF_EMAIL'], os.environ['DYN_CF_KEY'])
+    domain_list = cf.rec_load_all(z=root)['response']['recs']['objs']
+    create_new = True
+    for d in domain_list:
+        if d['name'] == target_name:
+            cf.rec_edit(z=root, _id=d['rec_id'], content=ip)
+            create_new = False
+            status = 0
+            break
+
+    if create_new:
+        cf.rec_new(zone=root, _type=type, content=ip, name=target_name, service_mode=0)
+        status = 0
 
     return status
 

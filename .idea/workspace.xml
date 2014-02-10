@@ -26,7 +26,7 @@
       <file leaf-file-name="app.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="13" selection-start="529" selection-end="529" vertical-scroll-proportion="0.23804574" vertical-offset="131" max-vertical-offset="1188">
+            <state line="8" column="17" selection-start="205" selection-end="205" vertical-scroll-proportion="0.15173867" vertical-offset="0" max-vertical-offset="1782">
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -37,7 +37,7 @@
       <file leaf-file-name="config" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="17" selection-start="154" selection-end="154" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
+            <state line="1" column="30" selection-start="40" selection-end="40" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="252">
               <folding />
             </state>
           </provider>
@@ -55,6 +55,7 @@
       <list>
         <option value="$PROJECT_DIR$/linode_key" />
         <option value="$PROJECT_DIR$/start.sh" />
+        <option value="$PROJECT_DIR$/config" />
         <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
@@ -212,6 +213,9 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+      <method />
+    </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -233,9 +237,6 @@
       <option name="PUREUNITTEST" value="true" />
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -344,6 +345,22 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="13" selection-start="529" selection-end="529" vertical-scroll-proportion="0.0" vertical-offset="185" max-vertical-offset="1188">
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="17" selection-start="154" selection-end="154" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="180">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="0" selection-start="469" selection-end="469" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
           <folding>
             <element signature="e#0#32#0" expanded="true" />
@@ -353,9 +370,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/start.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="28" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="126">
-          <folding />
-        </state>
+        <state line="0" column="28" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="126" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
@@ -378,21 +393,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/start.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="15" selection-start="25" selection-end="25" vertical-scroll-proportion="0.01871102" vertical-offset="0" max-vertical-offset="962">
-          <folding />
-        </state>
+        <state line="1" column="15" selection-start="25" selection-end="25" vertical-scroll-proportion="0.01871102" vertical-offset="0" max-vertical-offset="962" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="17" selection-start="154" selection-end="154" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
+        <state line="1" column="30" selection-start="40" selection-end="40" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="252">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="13" selection-start="529" selection-end="529" vertical-scroll-proportion="0.23804574" vertical-offset="131" max-vertical-offset="1188">
+        <state line="8" column="17" selection-start="205" selection-end="205" vertical-scroll-proportion="0.15173867" vertical-offset="0" max-vertical-offset="1782">
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
