@@ -73,19 +73,23 @@ def linode_update_ip(ip, root, name, rec_type='cname'):
 
 def cf_update_ip(ip, root, name, rec_type='cname'):
     status = -1
+    service_mode = 1
+    if rec_type == 'A' or rec_type == 'AAAA':
+        service_mode = 0
+
     target_name = name + '.' + root
     cf = CF(os.environ['DYN_CF_EMAIL'], os.environ['DYN_CF_KEY'])
     domain_list = cf.rec_load_all(z=root)['response']['recs']['objs']
     create_new = True
     for d in domain_list:
         if d['name'] == target_name:
-            cf.rec_edit(z=root, _type=rec_type, _id=d['rec_id'], name=name, content=ip)
+            cf.rec_edit(z=root, _type=rec_type, _id=d['rec_id'], name=name, content=ip, service_mode=service_mode)
             create_new = False
             status = 0
             break
 
     if create_new:
-        cf.rec_new(zone=root, _type=rec_type, content=ip, name=target_name, service_mode=0)
+        cf.rec_new(zone=root, _type=rec_type, content=ip, name=target_name, service_mode=service_mode)
         status = 0
 
     return status
