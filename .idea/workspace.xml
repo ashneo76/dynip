@@ -26,7 +26,7 @@
       <file leaf-file-name="app.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="72" selection-start="2454" selection-end="2454" vertical-scroll-proportion="0.63962066" vertical-offset="761" max-vertical-offset="1710">
+            <state line="18" column="29" selection-start="472" selection-end="472" vertical-scroll-proportion="0.18124342" vertical-offset="80" max-vertical-offset="1710">
               <folding />
             </state>
           </provider>
@@ -35,7 +35,7 @@
       <file leaf-file-name="config" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="40" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="252">
+            <state line="5" column="40" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="252">
               <folding />
             </state>
           </provider>
@@ -211,6 +211,9 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+      <method />
+    </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -232,9 +235,6 @@
       <option name="PUREUNITTEST" value="true" />
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -343,6 +343,20 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="72" selection-start="2454" selection-end="2454" vertical-scroll-proportion="0.0" vertical-offset="1440" max-vertical-offset="1710">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="40" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="252">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="17" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1782">
           <folding />
         </state>
@@ -409,7 +423,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="72" selection-start="2454" selection-end="2454" vertical-scroll-proportion="0.63962066" vertical-offset="761" max-vertical-offset="1710">
+        <state line="18" column="29" selection-start="472" selection-end="472" vertical-scroll-proportion="0.18124342" vertical-offset="80" max-vertical-offset="1710">
           <folding />
         </state>
       </provider>

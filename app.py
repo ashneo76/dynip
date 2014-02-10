@@ -19,23 +19,23 @@ def update():
                        ip=ip,
                        root=os.environ['DYN_DOMAIN'],
                        name=os.environ['DYN_RES'],
-                       type=os.environ['DYN_TYPE'])
+                       rec_type=os.environ['DYN_TYPE'])
     if status == -1:
         pass
     return ip
 
 
-def update_ip(service, ip, root, name, type):
+def update_ip(service, ip, root, name, rec_type):
     status = -1
     if service == 'linode':
-        status = linode_update_ip(ip, root, name, type)
+        status = linode_update_ip(ip, root, name, rec_type)
     elif service == 'cf':
-        status = cf_update_ip(ip, root, name, type)
+        status = cf_update_ip(ip, root, name, rec_type)
 
     return status
 
 
-def linode_update_ip(ip, root, name, type='cname'):
+def linode_update_ip(ip, root, name, rec_type='cname'):
     linode = l.Api(key=os.environ['DYN_LINODE_KEY'])
     domain_id = -1
     domain_list = linode.domain_list()
@@ -50,7 +50,7 @@ def linode_update_ip(ip, root, name, type='cname'):
         found = False
         resource_id = -1
         for r in res:
-            if r['TYPE'] == type and r['NAME'] == name:
+            if r['TYPE'] == rec_type and r['NAME'] == name:
                 found = True
                 resource_id = r['RESOURCEID']
                 break
@@ -63,14 +63,14 @@ def linode_update_ip(ip, root, name, type='cname'):
         else:
             linode.domain_resource_create(domainid=domain_id,
                                           name=name,
-                                          type=type,
+                                          type=rec_type,
                                           target=ip)
             status = 0
 
     return status
 
 
-def cf_update_ip(ip, root, name, type='cname'):
+def cf_update_ip(ip, root, name, rec_type='cname'):
     status = -1
     target_name = name + '.' + root
     cf = CF(os.environ['DYN_CF_EMAIL'], os.environ['DYN_CF_KEY'])
@@ -78,13 +78,13 @@ def cf_update_ip(ip, root, name, type='cname'):
     create_new = True
     for d in domain_list:
         if d['name'] == target_name:
-            cf.rec_edit(z=root, _type=type, _id=d['rec_id'], name=name, content=ip)
+            cf.rec_edit(z=root, _type=rec_type, _id=d['rec_id'], name=name, content=ip)
             create_new = False
             status = 0
             break
 
     if create_new:
-        cf.rec_new(zone=root, _type=type, content=ip, name=target_name, service_mode=0)
+        cf.rec_new(zone=root, _type=rec_type, content=ip, name=target_name, service_mode=0)
         status = 0
 
     return status
