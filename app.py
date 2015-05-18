@@ -1,14 +1,17 @@
+#!/usr/bin/python
 from flask import Flask, request
 from flask_debugtoolbar import DebugToolbarExtension
 from linode import api as l
 from cloudflare import CloudFlare as CF
 import os
+import yaml
 
+config = yaml.load(open('config.yml'))
 
 app = Flask(__name__)
-app.debug = os.environ['DYN_DEBUG'] == '1'
+app.debug = config['DYN_DEBUG'] == '1'
 if app.debug:
-	app.config['SECRET_KEY'] = os.environ['DYN_DBG_SECRET']
+	app.config['SECRET_KEY'] = config['DYN_DBG_SECRET']
 	toolbar = DebugToolbarExtension(app)
 
 
@@ -16,11 +19,11 @@ if app.debug:
 def update():
     ip = request.remote_addr
     print('Received new ip: ' + ip)
-    status = update_ip(service=os.environ['DYN_SRV_TYPE'],
+    status = update_ip(service=config['DYN_SRV_TYPE'],
                        ip=ip,
-                       root=os.environ['DYN_DOMAIN'],
-                       name=os.environ['DYN_RES'],
-                       rec_type=os.environ['DYN_TYPE'])
+                       root=config['DYN_DOMAIN'],
+                       name=config['DYN_RES'],
+                       rec_type=config['DYN_TYPE'])
     if status == -1:
         pass
     return ip
@@ -37,7 +40,7 @@ def update_ip(service, ip, root, name, rec_type):
 
 
 def linode_update_ip(ip, root, name, rec_type='cname'):
-    linode = l.Api(key=os.environ['DYN_LINODE_KEY'])
+    linode = l.Api(key=config['DYN_LINODE_KEY'])
     domain_id = -1
     domain_list = linode.domain_list()
     for d in domain_list:
@@ -78,7 +81,7 @@ def cf_update_ip(ip, root, name, rec_type='cname'):
         service_mode = 0
 
     target_name = name + '.' + root
-    cf = CF(os.environ['DYN_CF_EMAIL'], os.environ['DYN_CF_KEY'])
+    cf = CF(config['DYN_CF_EMAIL'], config['DYN_CF_KEY'])
     domain_list = cf.rec_load_all(z=root)['response']['recs']['objs']
     create_new = True
     for d in domain_list:
@@ -95,4 +98,4 @@ def cf_update_ip(ip, root, name, rec_type='cname'):
     return status
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(host='::', port=5000)
